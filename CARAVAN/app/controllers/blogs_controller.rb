@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog = Blog.find(params[:id]) #params[:id]で記事のIDを取得
   end
 
   def new
@@ -14,7 +15,7 @@ class BlogsController < ApplicationController
   def create
     blog = Blog.new(blog_params) #新規登録するインスタンス作成
     blog.save #データをDBに保存
-    redirect_to blogs_path #リダイレクト
+    redirect_to blog_path(blog.id) #リダイレクト
   end
 
   def edit
